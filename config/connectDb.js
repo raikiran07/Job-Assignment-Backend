@@ -4,7 +4,7 @@ const mongoose = require('mongoose')
 function connectDb(URL){
 
     mongoose.connect(URL,{
-        useUnifiedTopology:true
+        useNewUrlParser: true, useUnifiedTopology: true
     })
 
     const connection = mongoose.connection;
