@@ -3,7 +3,12 @@ const express = require('express')
 const app = express()
 const cookieParser = require('cookie-parser')
 const cors = require('cors')
-app.use(cors())
+// Configure CORS middleware
+const corsOptions = {
+    origin: 'http://localhost:5173', // Frontend URL that you want to allow
+    credentials: true, // Allow cookies/credentials to be sent
+  };
+app.use(cors(corsOptions))
 const connectDb = require('./config/connectDb')
 
 // importing routers
