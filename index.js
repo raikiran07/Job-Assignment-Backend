@@ -3,6 +3,7 @@ const express = require('express')
 const app = express()
 const cookieParser = require('cookie-parser')
 const cors = require('cors')
+app.use(cors())
 const connectDb = require('./config/connectDb')
 
 // importing routers
@@ -16,7 +17,7 @@ const authMiddleware = require('./middlewares/auth')
 const PORT = process.env.PORT || 5000
 
 // third party middlewares
-app.use(cors())
+
 app.use(express.urlencoded({extended:false}))
 app.use(express.json())
 app.use(cookieParser())
