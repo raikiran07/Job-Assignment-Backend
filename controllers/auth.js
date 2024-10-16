@@ -92,8 +92,7 @@ const login = async (req,res) => {
             httpOnly:true,
             
             // when set to cloud backend server change it to true
-            secure:true,
-            sameSite:"None",
+            secure:false,
         }).status(200).json({userId,name,msg:'successfully login',token})
     } catch (error) {
         console.log(error)

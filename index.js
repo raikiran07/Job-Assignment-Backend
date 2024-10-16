@@ -3,9 +3,10 @@ const express = require('express')
 const app = express()
 const cookieParser = require('cookie-parser')
 const cors = require('cors')
+app.use(cookieParser())
 // Configure CORS middleware
 const corsOptions = {
-    origin: 'https://job-assignment-frontend.vercel.app/', // Frontend URL that you want to allow
+    origin: 'https://job-assignment-frontend.vercel.app', // Frontend URL that you want to allow
     credentials: true, // Allow cookies/credentials to be sent
   };
 app.use(cors(corsOptions))
@@ -25,7 +26,7 @@ const PORT = process.env.PORT || 5000
 
 app.use(express.urlencoded({extended:false}))
 app.use(express.json())
-app.use(cookieParser())
+
 
 
 // auth router
