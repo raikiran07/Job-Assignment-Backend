@@ -91,7 +91,7 @@ const login = async (req,res) => {
         res.cookie('token',token,{
             httpOnly:true,
             // when set to cloud backend server change it to true
-            secure:true,
+            secure:process.env.NODE_ENV=='production',
             // this should be 'Lex' during developement
             sameSite:'None'
         }).status(200).json({userId,name,msg:'successfully login',token})
@@ -107,7 +107,7 @@ const logout = (req,res) => {
         console.log(token)
        res.clearCookie("token",{
         httpOnly:true,
-        secure:true,
+        secure:process.env.NODE_ENV=='production',
         sameSite:'None'
        })
        return res.status(200).json({msg:`succefully logout`})
