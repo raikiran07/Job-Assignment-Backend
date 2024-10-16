@@ -88,7 +88,10 @@ const login = async (req,res) => {
         const {_id:userId,name} = user
         const token = user.createJWT()
 
-        res.cookie('token',token).status(200).json({userId,name,msg:'successfully login',token})
+        res.cookie('token',token,{
+            httpOnly:true,
+            secure:true
+        }).status(200).json({userId,name,msg:'successfully login',token})
     } catch (error) {
         console.log(error)
     }
