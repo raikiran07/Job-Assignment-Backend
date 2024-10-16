@@ -104,7 +104,12 @@ const logout = (req,res) => {
     try {
         const {token} = req.cookies
         // console.log("token:"+token)
-       res.clearCookie("token")
+        console.log(token)
+       res.clearCookie("token",{
+        httpOnly:true,
+        secure:true,
+        sameSite:'None'
+       })
        return res.status(200).json({msg:`succefully logout`})
     } catch (error) {
         // console.log(error)
