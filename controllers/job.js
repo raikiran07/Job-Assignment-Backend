@@ -43,7 +43,7 @@ const postJob = async (req,res) => {
 const getAllPostedJobs = async (req,res) => {
     try {
         const user = req.user
-        if(!user.verified){
+        if(!user.emailVerified || !phoneVerified){
             return res.status(401).json({msg:"Please verify your account"})
         }
         const posts = await Jobs.find({company:user.userId})
