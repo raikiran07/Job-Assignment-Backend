@@ -10,12 +10,16 @@ const UsersSchema = new mongoose.Schema({
     },
     email:{
         type:String,
-        required:[true,'enter valid user email'],
+        required:[true,'Enter valid user email'],
         match: [
             /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
             'Please provide a valid email',
           ],
         unique:true
+    },
+    companyName:{
+      type:String,
+      required:[true,'Please enter company name']
     },
     password:{
         type:String,
@@ -26,19 +30,6 @@ const UsersSchema = new mongoose.Schema({
     phoneNo:{
         type:String,
         required:[true,'Phone number is required']
-    },
-    location:{
-        type:String,
-        required:[true,'Please provide location']
-    },
-    description:{
-        type:String,
-        required:[true,'Plase provide description'],
-        minlength:20
-    },
-    companyType:{
-        type:String,
-        required:[true,'Please provide company type']
     },
     size:{
         type:String,
