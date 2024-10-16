@@ -182,7 +182,7 @@ const verifyMobileNumber = async (req,res) => {
 
     } catch (error) {
         console.log(error)
-        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+        return res.status(500).json({
             msg:"Internal Server Error"
         })
     }
