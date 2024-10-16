@@ -90,7 +90,8 @@ const login = async (req,res) => {
 
         res.cookie('token',token,{
             httpOnly:true,
-            secure:true
+            secure:false,
+            sameSite:'Lax'
         }).status(200).json({userId,name,msg:'successfully login',token})
     } catch (error) {
         console.log(error)
@@ -105,7 +106,7 @@ const logout = (req,res) => {
        return res.status(200).json({msg:`succefully logout`})
     } catch (error) {
         // console.log(error)
-        res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({msg:'something went wrong'})
+        res.status(500).json({msg:'something went wrong'})
     }
 }
 
