@@ -169,7 +169,7 @@ const verifyMobileNumber = async (req,res) => {
         // delete mobile otp
         await MobileOtp.findByIdAndDelete(otpPresent._id)
 
-        return res.status(200).json(otpPresent)
+        return res.status(200).json({msg:"Phone number verified successfully"})
 
     //     console.log(token)
         
