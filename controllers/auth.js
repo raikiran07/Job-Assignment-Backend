@@ -182,11 +182,11 @@ const verifyMobileNumber = async (req,res) => {
 
     } catch (error) {
         console.log(error)
-        res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
             msg:"Internal Server Error"
         })
     }
-    return res.status(200).json({msg:'successfully verified email'});
+    
 }
 
 
