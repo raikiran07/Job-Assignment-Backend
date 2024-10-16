@@ -47,7 +47,7 @@ const getAllPostedJobs = async (req,res) => {
             return res.status(401).json({msg:"Please verify your account"})
         }
         const posts = await Jobs.find({company:user.userId}).sort({createdBy:-1})
-        console.log(posts)
+        // console.log(posts)
         return res.status(200).json(posts)
     } catch (error) {
         console.log(error)

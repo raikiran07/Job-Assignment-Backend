@@ -5,17 +5,16 @@ const cookieParser = require('cookie-parser')
 const cors = require('cors')
 
 // Configure CORS middleware for production
-// const corsOptions = {
-//     origin: 'https://job-assignment-frontend.vercel.app', // Frontend URL that you want to allow
-//     credentials: true, // Allow cookies/credentials to be sent
-//   };
+const corsOptions = {
+    origin: 'https://job-assignment-frontend.vercel.app', // Frontend URL that you want to allow
+    credentials: true, // Allow cookies/credentials to be sent
+  };
 
 // for development
-
-const corsOptions = {
-    origin: 'http://localhost:5173', // Frontend URL that you want to allow
-    credentials: true, // Allow cookies/credentials to be sent
-}
+// const corsOptions = {
+//     origin: 'http://localhost:5173', // Frontend URL that you want to allow
+//     credentials: true, // Allow cookies/credentials to be sent
+// }
 app.use(cors(corsOptions))
 app.use(cookieParser())
 const connectDb = require('./config/connectDb')
