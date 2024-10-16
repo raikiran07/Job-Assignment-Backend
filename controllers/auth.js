@@ -132,7 +132,7 @@ const verifyEmail = async (req,res) => {
          // delete mobile otp
          await Otp.findByIdAndDelete(otpPresent._id)
 
-        return res.status(200).json({msg:"email verified successfully"})
+        return res.status(200).json({msg:"email verified successfully",status:200})
 
 
     } catch (error) {
@@ -169,7 +169,7 @@ const verifyMobileNumber = async (req,res) => {
         // delete mobile otp
         await MobileOtp.findByIdAndDelete(otpPresent._id)
 
-        return res.status(200).json({msg:"Phone number verified successfully"})
+        return res.status(200).json({msg:"Phone number verified successfully",status:200})
 
     //     console.log(token)
         
