@@ -16,7 +16,10 @@ const JobSchema = new mongoose.Schema({
         type:String,
         required:[true,'Please provide required experience']
     },
-   
+   description:{
+        type:String,
+        required:[true,'Please provide description']
+   },
    
     endDate:{
         type:Date,
