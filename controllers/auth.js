@@ -200,5 +200,14 @@ const verifyMobileNumber = async (req,res) => {
     
 }
 
+const getProfile = async (req,res) => {
+    try {
+        const user = req.user
+        console.log(user)
+    } catch (error) {
+        console.log(error)
+    }
+}
 
-module.exports = {login,register,logout,verifyEmail,verifyMobileNumber}
+
+module.exports = {login,register,logout,verifyEmail,verifyMobileNumber,getProfile}
