@@ -26,7 +26,7 @@ const postJob = async (req,res) => {
         //send job alert notification to candidate emails
         if(candidatesEmail.length > 0){
             const message = req?.body?.description
-            await sendJobNotification(user.email,candidatesEmail,`Job Notification Alert - ${req.body.title}`,message);
+            await sendJobNotification(user.email,candidatesEmail,`Job Notification Alert - ${req.body.title}`,message,req.body.endDate);
         }
 
         

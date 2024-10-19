@@ -1,6 +1,8 @@
 const nodemailer = require('nodemailer')
+const ejs = require('ejs')
+const path = require('path')
 
-const sendEmailNotification = async (sendUserEmail,emailList,subject,message) => {
+const sendEmailNotification = async (sendUserEmail,emailList,subject,message,endDate) => {
     try {
 
         console.log(sendUserEmail)
@@ -17,11 +19,15 @@ const sendEmailNotification = async (sendUserEmail,emailList,subject,message) =>
             }
         })
 
+        const html = await ejs.renderFile(path.join(__dirname,'..','views','emailTemplate.ejs'),
+        {message,endDate}
+    )
+
         await transport.sendMail({
             from:"kirancoder007@gmail.com",
             to:emailString,
             subject:subject,
-            text:message
+            html:html
         })
         console.log("email send successfully")
     } catch (error) {

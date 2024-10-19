@@ -3,6 +3,7 @@ const express = require('express')
 const app = express()
 const cookieParser = require('cookie-parser')
 const cors = require('cors')
+const path = require('path')
 
 // Configure CORS middleware for production
 const corsOptions = {
@@ -19,6 +20,15 @@ app.use(cors(corsOptions))
 app.use(cookieParser())
 const connectDb = require('./config/connectDb')
 
+// setting view engine
+app.set('view engine','ejs')
+
+// setting view engine
+app.set('views',path.join(__dirname,'views'))
+
+// serving static images
+app.use(express.static('./public'))
+
 // importing routers
 const authRouter = require('./routes/auth')
 const jobRouter = require('./routes/job')
@@ -27,7 +37,7 @@ const jobRouter = require('./routes/job')
 const authMiddleware = require('./middlewares/auth')
 
 // Port
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 5001
 
 // third party middlewares
 
