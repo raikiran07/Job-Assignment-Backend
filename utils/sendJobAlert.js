@@ -5,9 +5,10 @@ const path = require('path')
 const sendEmailNotification = async (sendUserEmail,emailList,subject,message,endDate) => {
     try {
 
-        console.log(sendUserEmail)
-        const emailString = emailList.join(',');
-        console.log(emailString)
+        // console.log(sendUserEmail)
+        // const emailString = emailList.join(',');
+        // console.log(emailString)
+
         const transport = nodemailer.createTransport({
             host:process.env.HOST,
             service:process.env.SERVICE,
@@ -19,17 +20,29 @@ const sendEmailNotification = async (sendUserEmail,emailList,subject,message,end
             }
         })
 
-        const html = await ejs.renderFile(path.join(__dirname,'..','views','emailTemplate.ejs'),
-        {message,endDate}
-    )
+        // Sending emails one by one
 
-        await transport.sendMail({
-            from:"kirancoder007@gmail.com",
-            to:emailString,
-            subject:subject,
-            html:html
-        })
-        console.log("email send successfully")
+        for(let i=0;i<emailList.length;i++){
+                    const html = await ejs.renderFile(path.join(__dirname,'..','views','emailTemplate.ejs'),
+                {message,endDate}
+            )
+
+            await transport.sendMail({
+                from:"kirancoder007@gmail.com",
+                to:emailList[i],
+                subject:subject,
+                html:html
+            })
+
+            console.log("email send successfully")
+
+        }
+
+        
+
+
+       
+       
     } catch (error) {
         console.log("email not sent")
         console.log(error)

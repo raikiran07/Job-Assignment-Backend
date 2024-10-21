@@ -70,12 +70,12 @@ const login = async (req,res) => {
         const {email,password} = req.body
         const user = await Users.findOne({email})
         if(!user){
-            return res.status(StatusCodes.BAD_REQUEST).json({msg:"email is not registed"})
+            return res.status(400).json({email:'useremail not found',password:''})
         }
 
         const comparePassword = await user.comparePassword(password)
         if(!comparePassword){
-            return res.status(StatusCodes.BAD_REQUEST).json({msg:"password is incorrect"})
+            return res.status(400).json({email:'',password:'incorrect password'})
         }
 
     
